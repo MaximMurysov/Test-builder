@@ -54,19 +54,35 @@ export default defineConfig([
             },
             {
               from: { element: { type: 'pages' } },
-              allow: { to: { element: { types: ['widgets', 'features', 'entities', 'shared'] } } },
+              allow: {
+                to: {
+                  element: {
+                    types: ['widgets', 'features', 'entities', 'shared'],
+                    fileInternalPath: 'index.ts',
+                  },
+                },
+              },
             },
             {
               from: { element: { type: 'widgets' } },
-              allow: { to: { element: { types: ['features', 'entities', 'shared'] } } },
+              allow: {
+                to: {
+                  element: {
+                    types: ['features', 'entities', 'shared'],
+                    fileInternalPath: 'index.ts',
+                  },
+                },
+              },
             },
             {
               from: { element: { type: 'features' } },
-              allow: { to: { element: { types: ['entities', 'shared'] } } },
+              allow: {
+                to: { element: { types: ['entities', 'shared'], fileInternalPath: 'index.ts' } },
+              },
             },
             {
               from: { element: { type: 'entities' } },
-              allow: { to: { element: { types: ['shared'] } } },
+              allow: { to: { element: { types: ['shared'], fileInternalPath: 'index.ts' } } },
             },
           ],
         },
