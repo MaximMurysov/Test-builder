@@ -1,4 +1,11 @@
-import { LoginPage } from '@/pages/login';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './router';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 export const App = () => {
-  return <LoginPage />;
+  return (
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 };
