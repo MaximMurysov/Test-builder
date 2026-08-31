@@ -1,0 +1,62 @@
+# Имя воркфлоу — показывается в UI на вкладке Actions
+name: CI
+
+# on = когда запускать
+on:
+  # при пуше в main (в т.ч. после мержа PR)
+  push:
+    branches: [main]
+  # при открытии/обновлении PR, нацеленного в main
+  pull_request:
+    branches: [main]
+
+# Если запушить несколько коммитов подряд — старый прогон отменится,
+# останется только последний. Группа уникальна для каждой ветки.
+concurrency:
+  group: '${{ github.workflow }}-${{ github.ref }}'
+  cancel-in-progress: true
+
+# Минимальные права токена: CI только читает код, ничего не пишет
+permissions:
+  contents: read
+
+jobs:
+  # "checks" — id джобы, ты его придумываешь сам.
+  # Именно он потом выбирается в branch protection.
+  checks:
+    name: Lint, format & build
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Раннер стартует пустым — код надо склонировать явно
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # 2. Ставим pnpm. ОБЯЗАТЕЛЬНО до setup-node, иначе кеш не заведётся.
+      #    Версию не пишем: подхватится из "packageManager" в package.json
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      # 3. Ставим Node и включаем кеш pnpm-store.
+      #    Ключ кеша считается по хешу pnpm-lock.yaml
+      - name: Setup Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          cache: 'pnpm'
+
+      # 4. --frozen-lockfile запрещает менять лок-файл.
+      #    Если package.json разъехался с pnpm-lock.yaml — CI упадёт,
+      #    а не обновит лок молча, как это сделал бы pnpm локально
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # 5-7. Проверки: от быстрой к медленной
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Build
+        run: pnpm build
