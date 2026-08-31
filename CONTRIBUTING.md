@@ -132,7 +132,7 @@ docs/TB-22-readme
 <тип>(<область>): <что сделано> [<ключ задачи>]
 ```
 
-**Типы:** `feat`, `fix`, `refactor`, `chore`, `docs`, `test`, `style`, `perf`
+**Типы:** `feat`, `fix`, `refactor`, `chore`, `ci`, `docs`, `test`, `style`, `perf`
 
 **Область** — слой или слайс FSD: `shared/ui`, `entities/user`, `app`.
 Может отсутствовать, если изменение общепроектное.
