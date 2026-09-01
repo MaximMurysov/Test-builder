@@ -51,12 +51,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 5-7. Проверки: от быстрой к медленной
+      # 5-8. Проверки: от быстрой к медленной
       - name: Check formatting
         run: pnpm format:check
 
       - name: Lint
         run: pnpm lint
+
+      - name: Test
+        run: pnpm test
 
       - name: Build
         run: pnpm build

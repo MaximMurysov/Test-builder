@@ -19,7 +19,7 @@ Feature-Sliced Design и базовая инфраструктура сборк�
 | Состояние и сеть  | Redux Toolkit + RTK Query    | ✅ подключено  |
 | Формы и валидация | React Hook Form + Zod        | ⏳ планируется |
 | Компоненты        | Material UI                  | ⏳ планируется |
-| Тесты             | Jest + React Testing Library | ⏳ планируется |
+| Тесты             | Jest + React Testing Library | ✅ подключено  |
 | Качество кода     | ESLint 10, Prettier 3        | ✅ подключено  |
 
 Колонка «Статус» отражает то, что реально работает в приложении, а не то, что
