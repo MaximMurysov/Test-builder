@@ -20,6 +20,7 @@
 pnpm install       # установить зависимости
 pnpm dev           # дев-сервер с горячей перезагрузкой
 pnpm build         # продакшен-сборка (проверка типов + сборка)
+pnpm test          # тестирование
 pnpm lint          # проверка ESLint
 pnpm format        # отформатировать код Prettier
 pnpm format:check  # проверить форматирование, ничего не меняя
@@ -175,6 +176,7 @@ chore: apply prettier formatting
 Не «в основном готово», не «осталось по мелочи».
 
 - [ ] `pnpm build` проходит без ошибок
+- [ ] `pnpm test` чистый
 - [ ] `pnpm lint` чистый
 - [ ] `pnpm format:check` чистый
 - [ ] Правила слоёв FSD не нарушены
