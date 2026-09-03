@@ -18,7 +18,7 @@ Feature-Sliced Design и базовая инфраструктура сборк�
 | Границы слоёв     | eslint-plugin-boundaries     | ✅ подключено  |
 | Состояние и сеть  | Redux Toolkit + RTK Query    | ✅ подключено  |
 | Формы и валидация | React Hook Form + Zod        | ⏳ планируется |
-| Компоненты        | Material UI                  | ⏳ планируется |
+| Компоненты        | Ant Design 6                 | ✅ подключено  |
 | Тесты             | Jest + React Testing Library | ✅ подключено  |
 | Качество кода     | ESLint 10, Prettier 3        | ✅ подключено  |
 
