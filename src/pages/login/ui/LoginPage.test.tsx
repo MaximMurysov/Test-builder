@@ -5,6 +5,6 @@ describe('LoginPage', () => {
   it('рендерится и показывает кнопку', () => {
     render(<LoginPage />);
 
-    expect(screen.getByRole('button')).toBeVisible();
+    expect(screen.getByRole('button', { name: 'Войти' })).toBeVisible();
   });
 });
